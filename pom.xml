@@ -56,7 +56,6 @@
 			<scope>test</scope>
 		</dependency>
 
-        <!-- https://mvnrepository.com/artifact/me.paulschwarz/spring-dotenv -->
         <dependency>
             <groupId>me.paulschwarz</groupId>
             <artifactId>spring-dotenv</artifactId>
