@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://movie.nguyentruonggiang.id.vn",
   timeout: 5000,
   headers: {
     "ngrok-skip-browser-warning": "true",
