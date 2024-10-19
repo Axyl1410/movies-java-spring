@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import Anchor from "../components/common/Anchor";
 import { AuroraBackground } from "../components/ui/aurora-background";
 import { FlipWords } from "../components/ui/flip-words";
 
@@ -11,27 +11,21 @@ export default function Home() {
     "Aceternity UI",
   ];
   return (
-    <div className="h-screen w-screen overflow-x-hidden">
-      <AuroraBackground>
-        <motion.div
-          initial={{ opacity: 0.0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4"
-        >
-          <div className="h-[40rem] flex justify-center items-center px-4">
-            <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-              With
-              <FlipWords words={words} /> <br />
-              Websites by Axyl1410
-            </div>
+    <AuroraBackground>
+      <div className="relative flex flex-col items-center justify-center gap-4 px-4">
+        <div className="flex h-[40rem] items-center justify-center px-4">
+          <div className="mx-auto text-4xl font-normal text-neutral-600 dark:text-neutral-400">
+            With
+            <FlipWords words={words} /> <br />
+            Websites by Axyl1410 <br />
+            <Anchor
+              href="/movies"
+              text="Get Started"
+              className="after:bg-blue-500"
+            />
           </div>
-        </motion.div>
-      </AuroraBackground>
-    </div>
+        </div>
+      </div>
+    </AuroraBackground>
   );
 }

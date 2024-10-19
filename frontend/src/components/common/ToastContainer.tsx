@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import React, { useCallback, useState } from "react";
-import Toast from "./Toast";
+import Toast from "../Toast";
 
 interface ToastMessage {
   id: number;
@@ -17,7 +17,7 @@ const ToastContainer: React.FC = () => {
       setToasts((prevToasts) => [...prevToasts, { id, message, type }]);
       setTimeout(() => removeToast(id), 3000);
     },
-    [],
+    []
   );
 
   const removeToast = useCallback((id: number) => {

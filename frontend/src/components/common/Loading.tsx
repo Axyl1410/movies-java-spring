@@ -1,6 +1,6 @@
 import React from "react";
-import Transition from "../Transition";
 import styles from "./Loading.module.css";
+import Transition from "./Transition";
 
 const Loading: React.FC = () => {
   return (

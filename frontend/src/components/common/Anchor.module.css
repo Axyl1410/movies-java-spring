@@ -1,0 +1,16 @@
+.links::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 4px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s;
+}
+
+.links:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
