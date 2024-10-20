@@ -33,6 +33,21 @@ export default function DetailMovie() {
     }
   };
 
+  const postComment = async (body: string) => {
+    try {
+      const response = await api.post(`/api/v1/reviews`, {
+        imdbId,
+        body,
+      });
+      setMovie(response.data);
+      alert("Đã đánh giá");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      alert("Đã có lỗi xảy ra");
+    }
+  };
+
   useEffect(() => {
     if (imdbId) {
       getMovie();
@@ -46,14 +61,14 @@ export default function DetailMovie() {
           <div className="flex flex-col gap-2">
             <SkeletonImage
               height="240px"
-              src={movie?.backdrops[1] || ""}
+              src={movie?.backdrops?.[1] || ""}
               className="aspect-video object-cover"
             />
             <div className="flex gap-4">
               <div>
                 <p className="text-2xl font-bold">{movie?.title}</p>
                 <div className="flex items-center gap-2">
-                  {movie?.genres.map((item) => <p key={item}>{item}</p>)}
+                  {movie?.genres?.map((item) => <p key={item}>{item}</p>)}
                 </div>
                 <p
                   className={`flex items-center gap-1 text-gray-500 dark:text-gray-300`}
@@ -70,7 +85,6 @@ export default function DetailMovie() {
                   {movie?.releaseDate}
                 </p>
               </div>
-
               <div className="flex items-center gap-4">
                 <a href={movie?.trailerLink} target="_blank">
                   <button className="rounded-md bg-indigo-500 px-3 py-2 text-white transition-colors hover:bg-indigo-400">
@@ -95,7 +109,7 @@ export default function DetailMovie() {
                   animate={{ opacity: 1, height: "auto" }}
                   transition={{ duration: 0.3 }}
                 >
-                  {movie?.reviewIds.map((review) => (
+                  {movie?.reviewIds?.map((review) => (
                     <div
                       key={review._id}
                       className="flex flex-col border-t py-2"
@@ -119,11 +133,24 @@ export default function DetailMovie() {
               )}
             </div>
           </AnimatePresence>
+          <div>
+            <input
+              className="mt-4 w-full rounded border border-solid border-gray-300 px-4 py-2 text-sm"
+              id="comment"
+              placeholder="comment"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  postComment((e.target as HTMLInputElement).value);
+                  (e.target as HTMLInputElement).value = "";
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
       {movie ? (
         <div className="container grid w-full grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-4">
-          {movie?.backdrops.map((item) => (
+          {movie?.backdrops?.map((item) => (
             <div key={item} className="flex flex-col gap-2">
               <SkeletonImage
                 src={item}
