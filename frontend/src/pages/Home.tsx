@@ -18,8 +18,6 @@ export default function Home() {
             With
             <FlipWords words={words} /> <br />
             Websites by Axyl1410 <br />
-            In 2 days.
-            <br />
             <Anchor
               href="/movies"
               text="Get Started"
